@@ -29,7 +29,9 @@ class LtsmFadeAnimationView extends StatefulWidget {
                   //TODO:
                   //jika animate == true, atur opacity menjadi 0.5
                   //jika animate == false, atur opacity menjadi 1.0
-                  color: Colors.red.withOpacity(1.0),
+                  color: controller.animate
+                      ? Colors.red.withOpacity(0.5)
+                      : Colors.red.withOpacity(1.0),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(
                       16.0,
@@ -50,7 +52,13 @@ class LtsmFadeAnimationView extends StatefulWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueGrey,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  controller.setState(() {
+                    controller.animate
+                        ? controller.animate = false
+                        : controller.animate = true;
+                  });
+                },
               ),
             ],
           ),
