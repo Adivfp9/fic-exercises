@@ -28,12 +28,18 @@ class LtsmHorizontalCategoryListView extends StatefulWidget {
                   itemBuilder: (context, index) {
                     //TODO: Atur selectedIndex = index did alam event onTap()
                     //! Panggil controller.setState((){}); setelah-nya
+                    var item = index;
+                    bool isSelected = item == controller.selectedIndex;
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        controller.selectedIndex = index;
+                        controller.setState(() {});
+                      },
                       child: Card(
                         //TODO: Atur warna card, jika selectedIndex == index,
                         //! Maka warnanya orange,
                         //! Jika tidak, warnanya grey
+                        color: isSelected ? Colors.orange : Colors.grey,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -60,6 +66,8 @@ class LtsmHorizontalCategoryListView extends StatefulWidget {
                   itemCount: 4,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
+                    var item = index;
+                    bool isSelected = item == controller.selectedIndex;
                     //TODO: Atur selectedIndex = index did alam event onPressed()
                     //! Panggil controller.setState((){}); setelah-nya
                     return Container(
@@ -81,9 +89,13 @@ class LtsmHorizontalCategoryListView extends StatefulWidget {
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueGrey,
+                          backgroundColor:
+                              isSelected ? Colors.orange : Colors.grey,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.selectedIndex = index;
+                          controller.setState(() {});
+                        },
                       ),
                     );
                   },
