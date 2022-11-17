@@ -1,6 +1,4 @@
 import 'package:example/core.dart';
-import 'package:example/shared/widget/form/__form_detail_example.dart';
-import 'package:example/shared/widget/form/dropdown.dart';
 import 'package:flutter/material.dart';
 
 class FormExampleView extends StatefulWidget {
@@ -128,6 +126,7 @@ class FormExampleViewState extends State<FormExampleView> {
                     hint: "Your email",
                     validator: Validator.required,
                     value: "demo@gmail.com",
+                    iconField: Icons.email,
                     onChanged: (value) {
                       email = value;
                       print("email: $value");
@@ -136,6 +135,7 @@ class FormExampleViewState extends State<FormExampleView> {
                   QTextField(
                     label: "Password",
                     hint: "Your password",
+                    iconField: Icons.password,
                     obscure: true,
                     validator: Validator.required,
                     value: "123456",

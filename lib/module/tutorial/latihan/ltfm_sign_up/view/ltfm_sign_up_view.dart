@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:example/core.dart';
-import '../controller/ltfm_sign_up_controller.dart';
 
 class LtfmSignUpView extends StatefulWidget {
   const LtfmSignUpView({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class LtfmSignUpView extends StatefulWidget {
         child: Container(
           padding: const EdgeInsets.all(10.0),
           child: Column(
-            children: const [
+            children: [
               //! 1. Buatlah textfield email
               //! 2. Buatlah textfield password
               //! 3. Buatlah textfield confirm password
@@ -27,6 +26,36 @@ class LtfmSignUpView extends StatefulWidget {
               //ketika di klik, panggil:
               // controller.doLogin()
               //Jika dialog muncul ketika tombol di klik, tasks ini selesai
+              QTextField(
+                  value: "admin@gmail.com",
+                  label: "Email",
+                  iconField: Icons.email,
+                  hint: "Your Email",
+                  onChanged: (value) {}),
+              QTextField(
+                  value: "admin",
+                  label: "Password",
+                  iconField: Icons.password,
+                  hint: "Your Password",
+                  obscure: true,
+                  onChanged: (value) {}),
+              QTextField(
+                  value: "admin",
+                  label: "Confirm Password",
+                  iconField: Icons.password,
+                  hint: "Confirm Your Password",
+                  obscure: true,
+                  onChanged: (value) {}),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.login),
+                label: const Text("LOgin"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueGrey,
+                ),
+                onPressed: () {
+                  controller.doLogin();
+                },
+              ),
             ],
           ),
         ),
