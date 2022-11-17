@@ -194,6 +194,28 @@ class LtfmCheckoutFormView extends StatefulWidget {
               }
               */
               // dropdown
+              QDropdownField(
+                label: "Payment Method",
+                items: const [
+                  {
+                    "label": "Cash",
+                    "value": 1,
+                  },
+                  {
+                    "label": "Credit Card",
+                    "value": 2,
+                  },
+                  {
+                    "label": "OVO",
+                    "value": 3,
+                  },
+                  {
+                    "label": "Dana",
+                    "value": 4,
+                  }
+                ],
+                onChanged: (value, label) {},
+              ),
 
               // end of dropdown
 
@@ -236,6 +258,47 @@ class LtfmCheckoutFormView extends StatefulWidget {
                 },
               );
               */
+              SizedBox(
+                height: 40,
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButton.icon(
+                  icon: const Icon(Icons.check),
+                  label: const Text("Checkout"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey,
+                  ),
+                  onPressed: () async {
+                    Navigator.pop(context);
+                    await showDialog<void>(
+                      context: context,
+                      barrierDismissible: true,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Checkout success'),
+                          content: SingleChildScrollView(
+                            child: ListBody(
+                              children: const <Widget>[
+                                Text('Your order was placed!'),
+                              ],
+                            ),
+                          ),
+                          actions: <Widget>[
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blueGrey,
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Ok"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
